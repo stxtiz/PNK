@@ -1,0 +1,75 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 104vh;
+}
+
+.header {
+    background-color: #AC1754;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+}
+
+.header-izquierda {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
+    padding: 10px;
+    padding-top: 15px;
+}
+
+.titulo {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: aliceblue;
+}
+
+.main {
+    background-color: aliceblue;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.caja-crud {
+    width: 400px;
+    height: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #AC1754;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+}
+
+.crud-btn {
+    width: 200px;
+    padding: 10px;
+    background-color: #e72b73;
+    color: aliceblue;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    display: inline-block;
+    text-align: center;
+}
+
+.crud-btn:hover {
+    background-color: #d42062;
+    color: aliceblue;
+}

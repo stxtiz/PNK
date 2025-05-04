@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PNK INMOBILIARIA</title>
+    <link rel="stylesheet" href="css/inicio.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon-16x16.png">
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script>
+        function enviar()
+        {
+            if(document.forms.form.usuario.value=="")
+        {
+            alert("Debe ingresar un usuario");
+            document.forms.form.usuario.focus();
+            return false;
+        }else{
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(document.forms.form.usuario.value)) {
+                alert("Debe Ingresar un email válido");
+                return false;
+            }
+        }
+        if(document.forms.form.password.value=="")
+        {
+            alert("Debe ingresar una Contraseña");
+            document.forms.form.password.focus();
+            return false;
+        }else{
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordRegex.test(document.forms.form.password.value)) {
+                alert("Debe Ingresar una contraseña válida");
+                return false;
+            }
+        }
+        document.forms.form.submit();
+        }
+    </script>
+</head>
+<body>
+    <header class="header">
+        <div class="header-izquierda">
+            <img src="img/Logo.png" alt="Logo PNK" class="logo">
+            <div class="titulo">PNK INMOBILIARIA</div>
+        </div>
+
+        <nav class="header-derecha">
+            <a href="registro_propietario.html" class="header-botones">Registro Propietario</a>
+            <a href="registro_gestor.html" class="header-botones">Registro Gestor</a>
+            <a href="registro_usuario.html" class="header-botones">Crear Usuario</a>
+        </nav>
+
+    </header>
+
+    <main class="main">
+        <div class="login-contenedor">
+            <h2>Autenticación</h2>
+            <img src="img/key.png" alt="imagen" class="img-login">
+            <form action="procesa.php"  name="form" method="post">
+                <div class="input-group">
+                    <label for="fname">Usuario:</label>
+                    <input type="email" name="usuario" id="fname" placeholder="ingrese email" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" name="password" id="password" placeholder="ingrese nombre de Contraseña" required>
+                </div>
+                <button type="button" onclick="enviar();">Ingresar</button>
+            </form>            
+            <br>
+            <div><a href="recuperar.html" class="recuperar">Recuperar Contraseña</a></div>
+        </div>
+        <br>
+        <div class="caja-buscador">
+            <span class="titulo-buscador">Buscador</span>
+            <div class="buscadores">
+                <input type="text" placeholder="Comuna">
+                <input type="text" placeholder="Provincia">
+                <input type="text" placeholder="Sector">
+                <button>Buscar</button>
+            </div>
+        </div>
+        <br>
+
+        <div class="galeria">
+            <div class="propiedad">
+                <img src="img/departamento.jpg" alt="Departamento">
+                <div class="info-propiedad">
+                    <h3>Departamento</h3>
+                    <div class="precios">
+                        <span class="uf">UF 2.500</span>
+                        <span class="clp">CLP $75.000.000</span>
+                        <button>Ver más</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="propiedad">
+                <img src="img/casa.jpg" alt="Casa">
+                <div class="info-propiedad">
+                    <h3>Casa</h3>
+                    <div class="precios">
+                        <span class="uf">UF 4.000</span>
+                        <span class="clp">CLP $120.000.000</span>
+                        <button>Ver más</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="propiedad">
+                <img src="img/terreno.jpg" alt="Terreno">
+                <div class="info-propiedad">
+                    <h3>Terreno</h3>
+                    <div class="precios">
+                        <span class="uf">UF 1.800</span>
+                        <span class="clp">CLP $54.000.000</span>
+                        <button>Ver más</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="propiedad">
+                <img src="img/departamento2.jpg" alt="Departamento">
+                <div class="info-propiedad">
+                    <h3>Departamento</h3>
+                    <div class="precios">
+                        <span class="uf">UF 3.000</span>
+                        <span class="clp">CLP $90.000.000</span>
+                        <button>Ver más</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="propiedad">
+                <img src="img/casa2.jpg" alt="Casa">
+                <div class="info-propiedad">
+                    <h3>Casa</h3>
+                    <div class="precios">
+                        <span class="uf">UF 5.000</span>
+                        <span class="clp">CLP $150.000.000</span>
+                        <button>Ver más</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="propiedad">
+                <img src="img/terreno2.jpg" alt="Terreno">
+                <div class="info-propiedad">
+                    <h3>Terreno</h3>
+                    <div class="precios">
+                        <span class="uf">UF 2.200</span>
+                        <span class="clp">CLP $66.000.000</span>
+                        <button>Ver más</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-izquierda">
+            <img src="img/Logo.png" alt="Logo PNK" class="logo-footer">
+            <div class="titulo-footer">PNK INMOBILIARIA</div>
+        </div>
+
+        <nav class="footer-centro">
+            <a href="registro_propietario.html" class="enlace-footer">Registro Propietario</a>
+            <a href="registro_gestor.html" class="enlace-footer">Registro Gestor</a>
+            <a href="registro_usuario.html" class="enlace-footer">Registro Usuario</a>
+        </nav>
+
+        <nav class="footer-derecha">
+            <a href="https://www.instagram.com/tioreneoficial_/?hl=es" target="_blank">
+                <img src="img/logo-insta.png" alt="Logo instagram" class="logo-footer">
+            </a>
+            <a href="https://www.ticketmaster.cl/event/popin-un-show-muy-penca-centro-cultural-san-gines" target="_blank">
+                <img src="img/linkedin.png" alt="Logo Linkedin" class="logo-footer">
+            </a>
+        </nav>
+
+    </footer>
+
+    <div class="copyright">
+        &copy; 2025 Todos los derechos Reservados PNK Inmobiliaria
+    </div>
+</body>
+</html>
