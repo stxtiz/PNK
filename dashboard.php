@@ -51,7 +51,7 @@ if(isset($_SESSION['usuario']))
             <div class="card">
                 <div class="card-header"><b>CRUD Gestor Inmobiliario Free</b> </div>
                 <div class="card-body">
-                    <form action="crudusuarios.php" name="formulario" method="post">
+                    <form action="crudusGestor.php" name="formulario" method="post">
                         <div class="campos">
                             <div class="row">
                                 <div class="col-sm"><label for="rut" class="form-label">Rut</label></div>
@@ -68,10 +68,10 @@ if(isset($_SESSION['usuario']))
                         </div>
                         
                         <br>
-                        <button class="boton-formulario" onclick="enviar(this.value);">Ingresar</button>
-                        <button class="boton-formulario">Modificar</button>
-                        <button class="boton-formulario">Eliminar</button>
-                        <button class="boton-formulario">Cancelar</button>
+                        <button type="button" class="boton-formulario" onclick="enviar(this.value);" value="Ingresar">Ingresar</button>
+                        <button type="button" class="boton-formulario" onclick="enviar(this.value);">Modificar</button>
+                        <button type="button" class="boton-formulario" onclick="enviar(this.value);">Eliminar</button>
+                        <button type="button" class="boton-formulario" onclick="enviar(this.value);">Cancelar</button>
                     </form>
                 </div>
             </div>
