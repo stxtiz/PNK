@@ -16,7 +16,15 @@ if(isset($_SESSION['usuario']))
     <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="css/dashboard.css">
+
+    <script>
+        function enviar(op)
+        {
+            alert(op)
+        }
+    </script>
 </head>
 <body>
     <header class="header">
@@ -38,9 +46,34 @@ if(isset($_SESSION['usuario']))
                     <a href="cerrar.php">Cerrar sesión</a>
                 </div>
             </div>
-            <div id="formulario"> 
-                // avanzar en clases
-
+        </div>
+        <div id="formulario"> 
+            <div class="card">
+                <div class="card-header"><b>CRUD Gestor Inmobiliario Free</b> </div>
+                <div class="card-body">
+                    <form action="crudusuarios.php" name="formulario" method="post">
+                        <div class="campos">
+                            <div class="row">
+                                <div class="col-sm"><label for="rut" class="form-label">Rut</label></div>
+                                <div class="col-sm"><input type="rut" class="form-control" id="rut" name="rut"></div>
+                                <div class="col-sm">Nombres</div>
+                                <div class="col-sm"><input type="nombre" class="form-control" id="nombre" name="nombre"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm">Apellido Paterno</div>
+                                <div class="col-sm"><input type="rut" class="form-control" id="rut" name="rut"></div>
+                                <div class="col-sm">Apellido Materno</div>
+                                <div class="col-sm"><input type="rut" class="form-control" id="rut" name="rut"></div>
+                            </div>
+                        </div>
+                        
+                        <br>
+                        <button class="boton-formulario" onclick="enviar(this.value);">Ingresar</button>
+                        <button class="boton-formulario">Modificar</button>
+                        <button class="boton-formulario">Eliminar</button>
+                        <button class="boton-formulario">Cancelar</button>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="botones-panel">
@@ -56,7 +89,7 @@ if(isset($_SESSION['usuario']))
         <br>
         <div id="mostrarusuarios">
             <div class="card">
-                <div class="card-header">Lista de los Usuarios (<b>Total de Usuarios en la BD (<?php echo contarusu();?>) </b>)</div>
+                <div class="card-header"> (<b>Total de Usuarios en la BD <?php echo contarusu();?></b>)</div>
                 <div class="card-body">
                     <table class="table table-hover">
                             <thead>
@@ -65,6 +98,10 @@ if(isset($_SESSION['usuario']))
                                     <th>Nombre</th>
                                     <th>Apellido</th>
                                     <th>Usuario</th>
+                                    <th>Fecha de nacimiento</th>
+                                    <th>Teléfono Móvil</th>
+                                    <th>Tipo de usuario</th>
+                                    <th>N° de propiedad</th>
                                     <th>Estado</th>
                                     <th>Acciones</th>
                                 </tr>
