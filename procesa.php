@@ -12,7 +12,8 @@ if ($contador!=0)
 {
     session_start(); // Inicia la sesión
     $_SESSION['usuario'] = $datos['nombres']; // Almacena el nombre de usuario en la sesión en una variable
-
+    $_SESSION['tipo'] = $datos['tipo']; // Almacena el tipo de usuario en la sesión en una variable
+    
     header("Location: dashboard.php");
 } else {
     header("Location: index.html");

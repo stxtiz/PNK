@@ -7,12 +7,13 @@
     <link rel="stylesheet" href="css/inicio.css">
     <link rel="icon" type="image/x-icon" href="img/favicon-16x16.png">
     <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function enviar()
         {
             if(document.forms.form.usuario.value=="")
         {
-            alert("Debe ingresar un usuario");
+            alert("Debe ingresar un usuarios");
             document.forms.form.usuario.focus();
             return false;
         }else{

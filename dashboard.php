@@ -2,8 +2,24 @@
 session_start();
 include("setup/config.php"); // Incluye el archivo de configuración para la conexión a la base de datos
 
-if(isset($_SESSION['usuario']))
+if (isset($_SESSION['usuario']) && isset($_SESSION['tipo']) && $_SESSION['tipo'] == 3)
 {
+
+    $tipoTexto = '';
+
+    switch ($_SESSION['tipo']) {
+        case 1:
+            $tipoTexto = 'Gestor Inmobiliario Free';
+            break;
+        case 2:
+            $tipoTexto = 'Dueño de Inmueble';
+            break;
+        case 3:
+            $tipoTexto = 'Administrador';
+            break;
+        default:
+            $tipoTexto = 'Desconocido';
+    }
 
 ?>
 
@@ -17,12 +33,15 @@ if(isset($_SESSION['usuario']))
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="css/dashboard.css">
+    
 
     <script>
         function enviar(op)
         {
-            alert(op)
+            document.formulario.opoculto.value=op;
+            document.formulario.submit();
         }
     </script>
 </head>
@@ -38,7 +57,7 @@ if(isset($_SESSION['usuario']))
         <div class="dashboard">
             <div class="contenido-dashboard">
                 <div class="texto-icono">
-                    <span><img src="img/dash.png" alt="Dashboard">  Bienvenido <br><?php echo $_SESSION['usuario']; ?>
+                    <span><img src="img/dash.png" alt="Dashboard">  Bienvenido <br><?php echo $_SESSION['usuario']; ?><br><?php echo $tipoTexto; ?></span>
                     </span>
                 </div>
                 <div class="texto-icono cerrar-sesion">
@@ -51,27 +70,57 @@ if(isset($_SESSION['usuario']))
             <div class="card">
                 <div class="card-header"><b>CRUD Gestor Inmobiliario Free</b> </div>
                 <div class="card-body">
-                    <form action="crudusGestor.php" name="formulario" method="post">
+                    <form action="crudGestor.php" name="formulario" method="post">
                         <div class="campos">
                             <div class="row">
-                                <div class="col-sm"><label for="rut" class="form-label">Rut</label></div>
+                                <div class="col-sm">Rut</label></div>
                                 <div class="col-sm"><input type="rut" class="form-control" id="rut" name="rut"></div>
                                 <div class="col-sm">Nombres</div>
-                                <div class="col-sm"><input type="nombre" class="form-control" id="nombre" name="nombre"></div>
+                                <div class="col-sm"><input type="nombres" class="form-control" id="nombres" name="nombres"></div>
                             </div>
+                            <br>
                             <div class="row">
                                 <div class="col-sm">Apellido Paterno</div>
-                                <div class="col-sm"><input type="rut" class="form-control" id="rut" name="rut"></div>
+                                <div class="col-sm"><input type="appaterno" class="form-control" id="appaterno" name="appaterno"></div>
                                 <div class="col-sm">Apellido Materno</div>
-                                <div class="col-sm"><input type="rut" class="form-control" id="rut" name="rut"></div>
+                                <div class="col-sm"><input type="apmaterno" class="form-control" id="apmaterno" name="apmaterno"></div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm">Correo</label></div>
+                                <div class="col-sm"><input type="usuario" class="form-control" id="usuario" name="usuario"></div>
+                                <div class="col-sm">Fecha de Nacimiento</div>
+                                <div class="col-sm"><input type="date" class="form-control" id="fechanacimiento" name="fechanacimiento"></div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm">Sexo</div>
+                                <div class="col-sm"><input type="sexo" class="form-control" id="sexo" name="sexo"></div>
+                                <div class="col-sm">Tipo</div>
+                                <div class="col-sm"><input type="Tipo" class="form-control" id="tipo" name="tipo"></div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm">Telefono</div>
+                                <div class="col-sm"><input type="telefono" class="form-control" id="telefono" name="telefono"></div>
+                                <div class="col-sm">N° Propiedad</div>
+                                <div class="col-sm"><input type="npropiedad" class="form-control" id="npropiedad" name="npropiedad"></div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm">Contraseña</div>
+                                <div class="columa-sm"><input type="password" class="form-control" id="clave" name="clave"></div>
+
                             </div>
                         </div>
                         
-                        <br>
+                        <br><center>
                         <button type="button" class="boton-formulario" onclick="enviar(this.value);" value="Ingresar">Ingresar</button>
-                        <button type="button" class="boton-formulario" onclick="enviar(this.value);">Modificar</button>
-                        <button type="button" class="boton-formulario" onclick="enviar(this.value);">Eliminar</button>
-                        <button type="button" class="boton-formulario" onclick="enviar(this.value);">Cancelar</button>
+                        <button type="button" class="boton-formulario" onclick="enviar(this.value);" value="Modificar">Modificar</button>
+                        <button type="button" class="boton-formulario" onclick="enviar(this.value);" value="Eliminar">Eliminar</button>
+                        <button type="button" class="boton-formulario" onclick="enviar(this.value);" value="Cancelar">Cancelar</button></center>
+                        <br>
+                        <input type="hidden" name="opoculto">
                     </form>
                 </div>
             </div>
@@ -100,8 +149,9 @@ if(isset($_SESSION['usuario']))
                                     <th>Usuario</th>
                                     <th>Fecha de nacimiento</th>
                                     <th>Teléfono Móvil</th>
-                                    <th>Tipo de usuario</th>
                                     <th>N° de propiedad</th>
+                                    <th>Sexo</th>
+                                    <th>Tipo de usuario</th>
                                     <th>Estado</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -118,6 +168,36 @@ if(isset($_SESSION['usuario']))
                                     <td><?php echo $datos['nombres'];?></td>
                                     <td><?php echo $datos['ap_paterno']." ".$datos['ap_materno'];?></td>
                                     <td><?php echo $datos['usuario'];?></td>
+                                    <td><?php echo $datos['fechanacimiento'];?></td>
+                                    <td><?php echo $datos['telefono'];?></td>
+                                    <td><?php echo $datos['npropiedad'];?></td>
+                                    <td>
+                                        <?php
+                                            if($datos['sexo']=='M')
+                                            {
+                                                echo "Masculino";
+                                            }elseif($datos['sexo']=='F')
+                                            {
+                                                echo "Femenino";
+                                            }else{
+                                                echo "No especificado";
+                                            }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                            if($datos['tipo']==1)
+                                            {
+                                                echo "Gestor Inmobiliario Free";
+                                            }elseif($datos['tipo']==2)
+                                            {
+                                                echo "Dueño de Inmueble";
+                                            }else{
+                                                echo "Administrador";
+                                            }
+                                        ?>
+                                    </td>
+
                                     <td>
                                             <?php
                                             if($datos['estado']==1)

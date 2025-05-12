@@ -168,6 +168,13 @@ body {
     color: white !important;
     text-decoration: none !important;
 }
+
+.columa-sm{
+    padding-right: 500px;
+    padding-left: 231px;
+    
+
+}
 #mostrarusuarios {
     width: 1500px ;
     padding: 5px ;
@@ -179,4 +186,7 @@ body {
     padding: 5px ;
     margin: auto ;
     background-color: aliceblue ;
+    text-align: left;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
